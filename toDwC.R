@@ -3,7 +3,7 @@
 #
 # Author: Vaughn M. Shirey
 
-library(dplyr) # functions require dplyr
+library(dplyr) # functions may require dplyr
 
 yukonSpecies <- read.table(text = "SurveyCode,Boloria polaris,Boloria chariclea,Parnassius eversmanni
                            AA_2019-07-13,1,2,0
@@ -43,8 +43,7 @@ toSimpleDwC <- function(surveyBySpecies, surveys, transect = FALSE, transectWidt
     }
   }
   
-  gsub('\\.', ' ', dOutput$scientificName)
-  
+  dOutput$scientificName <- gsub('.', ' ', dOutput$scientificName, fixed=TRUE)
   return(dOutput)
 }
 
